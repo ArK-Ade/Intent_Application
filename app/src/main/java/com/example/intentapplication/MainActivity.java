@@ -1,6 +1,7 @@
 package com.example.intentapplication;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import com.google.android.material.snackbar.Snackbar;
@@ -59,12 +60,12 @@ public class MainActivity extends AppCompatActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        Intent myIntent = new Intent(this,MainActivity2.class);
+        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.polytech.univ-tours.fr/"));
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_next) {
 
-            this.startActivity(myIntent);
+            this.startActivity(browserIntent);
         }
 
         return super.onOptionsItemSelected(item);
