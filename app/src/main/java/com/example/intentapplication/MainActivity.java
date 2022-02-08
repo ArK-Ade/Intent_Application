@@ -62,18 +62,13 @@ public class MainActivity extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        String phoneNumber = "12345";
-        String message =  "Un message à envoyer";
-
-        // Add the phone number in the data
-        Uri uri = Uri.parse("smsto:" + phoneNumber);
-
-        Intent smsIntent = new Intent(Intent.ACTION_SENDTO, uri);
-        smsIntent.putExtra("sms_body", message);
+        String number = "0123456";
+        Intent intent = new Intent(Intent.ACTION_DIAL);
+        intent.setData(Uri.parse("tel:" +number));
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_next) {
-            this.startActivity(smsIntent);
+            this.startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
     }
