@@ -8,6 +8,7 @@ import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.provider.ContactsContract;
 import android.view.View;
 
 import androidx.navigation.NavController;
@@ -60,14 +61,18 @@ public class MainActivity extends AppCompatActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.polytech.univ-tours.fr/"));
+
+        Intent intent = new Intent(Intent.ACTION_INSERT);
+        intent.setType(ContactsContract.Contacts.CONTENT_TYPE);
+
+        intent.putExtra(ContactsContract.Intents.Insert.NAME, "John Smith");
+        intent.putExtra(ContactsContract.Intents.Insert.PHONE, 12345);
+        intent.putExtra(ContactsContract.Intents.Insert.EMAIL, "john@smith.com");
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_next) {
-
-            this.startActivity(browserIntent);
+            this.startActivity(intent);
         }
-
         return super.onOptionsItemSelected(item);
     }
 
